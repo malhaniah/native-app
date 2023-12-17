@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, StyleSheet, View } from "react-native";
+import { StatusBar } from "expo-status-bar";
 
 import Input from "./components/Input";
 import DisplayList from "./components/DisplayList";
@@ -38,25 +39,29 @@ export default function App() {
   };
 
   return (
-    <View style={styles.appContainer}>
-      <Button title="Add New Goal" onPress={handleModelVisible} />
-      <Input
-        onAddItem={handleAddGoal}
-        onEnterInput={handleInput}
-        onCancel={handleModelVisible}
-        text={goal}
-        modelVisible={modelVisible}
-      />
-      <DisplayList
-        deleteFunctionHandler={handleDeleteGoal}
-        ListItem={courseGoal}
-      />
-    </View>
+    <>
+      <StatusBar style="light" />
+      <View style={styles.appContainer}>
+        <Button title="Add New Goal" onPress={handleModelVisible} />
+        <Input
+          onAddItem={handleAddGoal}
+          onEnterInput={handleInput}
+          onCancel={handleModelVisible}
+          text={goal}
+          modelVisible={modelVisible}
+        />
+        <DisplayList
+          deleteFunctionHandler={handleDeleteGoal}
+          ListItem={courseGoal}
+        />
+      </View>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
   appContainer: {
+    backgroundColor: "#111",
     flex: 1,
     paddingTop: 50,
     paddingHorizontal: 20,
